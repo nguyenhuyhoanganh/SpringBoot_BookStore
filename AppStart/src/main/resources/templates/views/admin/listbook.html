@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>list book</title>
+<link rel="stylesheet" th:href="@{/css/pagination.css}">
+<style>
+table, th, td {
+	border: 1px solid black;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+}
+</style>
+</head>
+<body>
+	<h2>Danh sách sản phẩm</h2>
+	<hr />
+	<!-- 	<div>
+		<form>
+			<input type="text" name="keyword" th:value="${keyword}"
+				placeholder="nhap vao day!! ten product can tim kiem"> <label>
+				category : </label> <select type="text" name="categoryName"
+				th:value="${categoryName}">
+				<option th:each="id: ${categoryList}" th:value="${id.name}"
+					th:text="${id.name}"></option>
+				<option selected="selected"></option>
+			</select> <label> Thuong Hieu : </label> <select type="text"
+				name="thuongHieuName" th:value="${thuongHieuName}">
+				<option th:each="id: ${thuongHieuList}" th:value="${id.name}"
+					th:text="${id.name}"></option>
+				<option selected="selected"></option>
+			</select> <label> Kich Thuoc : </label> <select type="text"
+				name="kichThuocName" th:value="${kichThuocName}">
+				<option th:each="kichThuoc: ${kichThuocList}"
+					th:value="${kichThuoc.name}" th:text="${kichThuoc.name}"></option>
+				<option selected="selected"></option>
+			</select> <label> Gioi Tinh: </label> <select type="text" name="gioiTinhName"
+				th:value="${gioiTinhName}">
+				<option th:each="gioiTinh: ${gioiTinhList}"
+					th:value="${gioiTinh.name}" th:text="${gioiTinh.name}"></option>
+				<option selected="selected"></option>
+			</select> <input type="text" name="priceStart" th:value="${priceStart}"
+				placeholder="giá từ"> <input type="text" name="priceEnd"
+				th:value="${priceEnd}" placeholder="giá đến">
+
+
+			<button type="submit">search</button>
+		</form>
+	</div> -->
+	<a href="">Thêm mới</a>
+	<div class="center">
+		<table>
+			<tr>
+				<th>Mã Sách</th>
+				<th>Tên Sách</th>
+				<th>Ảnh 1</th>
+				<th>Ảnh 2</th>
+				<th>Ảnh 3</th>
+				<th>Đơn Giá</th>
+				<th>Số Lượng Tồn</th>
+				<th>Số Lượng Mua</th>
+				<th>Thể Loại</th>
+				<th>Nhóm</th>
+				<th>Nhà Xuất Bản</th>
+				<th>Chọn</th>
+			</tr>
+
+			<tr th:each="book : ${books}">
+				<td th:text="${book.maSach}"></td>
+				<td th:text="${book.tenSach}"></td>
+				<td th:text="${book.hinhAnh}"></td>
+				<td th:text="${book.hinhAnh2}"></td>
+				<td th:text="${book.hinhAnh3}"></td>
+				<td th:text="${book.donGia}"></td>
+				<td th:text="${book.soLuongTon}"></td>
+				<td th:text="${book.soLuongMua}"></td>
+				<td th:text="${book.theLoai.tenTheLoai}"></td>
+				<td th:text="${book.nhomMua.tenNhom}"></td>
+				<td th:text="${book.nhaXuatBan.tenNhaXuatBan}"></td>
+				<td><a href="">Chi tiết</a> <a href="">Xóa</a></td>
+			</tr>
+		</table>
+	</div>
+	<br />
+	<div style="text-align: center;">
+		<span style="display: block; text-align: center;">Showing
+			products [[${start}]] to [[${end}]] of [[${totalData}]]</span>
+		<div class="pagination">
+
+			<th:block th:if="${totalPage <= 8}">
+				<a th:href="@{'/danh-sach-san-pham?currentPage='+${i}}"
+					th:each="i: ${#numbers.sequence(1, totalPage)}"
+					th:class="${currentPage == i ? 'active' : ''}">[[${i}]]</a>
+			</th:block>
+
+			<th:block th:if="${totalPage > 8}">
+				<a th:href="@{'/danh-sach-san-pham?currentPage=1'}"
+					th:class="${currentPage == 1 ? 'disbale' : ''}">&laquo;</a>
+				<th:block th:if="${currentPage <= 4 || currentPage > totalPage - 3}">
+					<a th:href="@{'/danh-sach-san-pham?currentPage='+${i}}"
+						th:each="i: ${#numbers.sequence(1, 5)}"
+						th:class="${currentPage == i ? 'active' : ''}">[[${i}]]</a>
+
+					<a th:href="@{'/danh-sach-san-pham?currentPage=5'}">...</a>
+
+					<a th:href="@{'/danh-sach-san-pham?currentPage='+${i}}"
+						th:each="i: ${#numbers.sequence(totalPage - 3, totalPage)}"
+						th:class="${currentPage == i ? 'active' : ''}">[[${i}]]</a>
+				</th:block>
+				<a th:href="@{'/danh-sach-san-pham?currentPage='+${totalPage}}"
+					th:class="${currentPage == totalPage ? 'disbale' : ''}">&raquo;</a>
+			</th:block>
+
+			<th:block th:if="${currentPage > 4 && currentPage < totalPage - 3}">
+				<a
+					th:href="@{'/danh-sach-san-pham?currentPage='+${currentPage - 4}}">...</a>
+
+				<a th:href="@{'/danh-sach-san-pham?currentPage='+${i}}"
+					th:each="i: ${#numbers.sequence(currentPage - 3, currentPage + 3)}"
+					th:class="${currentPage == i ? 'active' : ''}">[[${i}]]</a>
+
+				<a
+					th:href="@{'/danh-sach-san-pham?currentPage='+${currentPage + 4}}">...</a>
+			</th:block>
+
+		</div>
+	</div>
+</body>
+</html>

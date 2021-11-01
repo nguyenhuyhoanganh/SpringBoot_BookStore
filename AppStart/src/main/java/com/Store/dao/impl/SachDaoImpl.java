@@ -13,7 +13,7 @@ import com.Store.entity.Sach;
 
 @Transactional
 @Repository
-public class SachDaoImpl implements SachDao{
+public class SachDaoImpl implements SachDao {
 
 	@PersistenceContext
 	EntityManager entityManager;
@@ -40,9 +40,44 @@ public class SachDaoImpl implements SachDao{
 	}
 
 	@Override
-	public List<Sach> getAllBook() {
+	public List<Sach> getAllBook(int currentPage, int size) {
+		int totalData, totalPage, start;
+		
 		String jpql="SELECT s FROM Sach s";
-		return entityManager.createQuery(jpql, Sach.class).getResultList();
+		
+		totalData = entityManager.createQuery(jpql, Sach.class).getResultList().size();
+		
+		totalPage = totalData / size * size < totalData ? totalData / size + 1 : totalData / size;
+		
+		currentPage = currentPage < 1 ? 1 : currentPage > totalPage ? totalPage : currentPage;
+		
+		size = size < 0 ? 0 : currentPage * size > totalData ? totalData - (currentPage - 1) * size : size;
+		
+		start = (currentPage - 1) * size;
+		
+		return entityManager.createQuery(jpql, Sach.class).setFirstResult(start).setMaxResults(size).getResultList();
+	}
+
+	@Override
+	public List<Sach> search(String tenSach, String tenTheLoai, String tenNhaXuatBan, String tenNhomMua,
+			long donGiaBatDau, long donGiaKetThuc) {
+		try {
+			String hql = "SELECT s FROM Sach s  JOIN s.theloai tl"
+					+ " JOIN s.nhaxuatban nxb"
+					+ " JOIN s.nhommua nm"
+					+ " WHERE (s.tenSach like:tensach AND tl.tenTheLoai like:tentheloai and nxb.tenNhaXuatBan like:tennxb"
+					+ " AND nm.tenNhom like:tennhom"
+					+ " AND (s.donGia between :donGiaBatDau AND :donGiaKetThuc ))";
+
+			return entityManager.createQuery(hql, Sach.class).setParameter("tensach", "%" + tenSach + "%")
+					.setParameter("tentheloai", "%" + tenTheLoai + "%").setParameter("tennxb", "%" + tenNhaXuatBan + "%")
+					.setParameter("tennhom", "%" + tenNhomMua + "%").setParameter("donGiaBatDau", donGiaBatDau)
+					.setParameter("donGiaKetThuc", donGiaKetThuc).getResultList();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
 	}
 
 }

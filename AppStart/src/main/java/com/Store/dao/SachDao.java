@@ -1,10 +1,10 @@
 package com.Store.dao;
 
-import com.Store.entity.Sach;
-
 import java.util.List;
 
-public interface SachDao {
+import com.Store.entity.Sach;
+
+public interface SachDao{
 	public void addBook(Sach sach);
 
 	public void updateBook(Sach sach);
@@ -13,7 +13,8 @@ public interface SachDao {
 
 	public Sach getBookById(int maSach);
 
-	public List<Sach> getAllBook();
+	public List<Sach> getAllBook(int curentPage, int size);
 
-//	public List<Sach> getByCate(int cateId);
+	public List<Sach> search(String tenSach, String tenTheLoai, String tenNhaXuatBan, String tenNhomMua,
+			long donGiaBatDau, long donGiaKetThuc);
 }
