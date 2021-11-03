@@ -1,6 +1,6 @@
 package com.Store.model;
 
-public class NhaXuatBanDTO {
+public class NhaxuatbanDTO {
 	private int maNhaXuatBan;
 	private String logo;
 	private String tenNhaXuatBan;
@@ -38,7 +38,7 @@ public class NhaXuatBanDTO {
 		this.thongTin = thongTin;
 	}
 
-	public NhaXuatBanDTO(int maNhaXuatBan, String logo, String tenNhaXuatBan, String thongTin) {
+	public NhaxuatbanDTO(int maNhaXuatBan, String logo, String tenNhaXuatBan, String thongTin) {
 		super();
 		this.maNhaXuatBan = maNhaXuatBan;
 		this.logo = logo;
@@ -46,7 +46,7 @@ public class NhaXuatBanDTO {
 		this.thongTin = thongTin;
 	}
 
-	public NhaXuatBanDTO() {
+	public NhaxuatbanDTO() {
 		super();
 	}
 	

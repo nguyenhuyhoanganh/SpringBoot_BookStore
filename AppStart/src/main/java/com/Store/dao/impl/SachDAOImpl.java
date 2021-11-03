@@ -8,12 +8,12 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.Store.dao.SachDao;
+import com.Store.dao.SachDAO;
 import com.Store.entity.Sach;
 
 @Transactional
 @Repository
-public class SachDaoImpl implements SachDao {
+public class SachDAOImpl implements SachDAO {
 
 	@PersistenceContext
 	EntityManager entityManager;
@@ -48,12 +48,18 @@ public class SachDaoImpl implements SachDao {
 		totalData = entityManager.createQuery(jpql, Sach.class).getResultList().size();
 		
 		totalPage = totalData / size * size < totalData ? totalData / size + 1 : totalData / size;
-		
+		System.out.println("totalData: "+ totalData);		
 		currentPage = currentPage < 1 ? 1 : currentPage > totalPage ? totalPage : currentPage;
-		
-		size = size < 0 ? 0 : currentPage * size > totalData ? totalData - (currentPage - 1) * size : size;
+		size = size < 0 ? 0 : size;
 		
 		start = (currentPage - 1) * size;
+		
+		size =  currentPage * size > totalData ? totalData - (currentPage - 1) * size : size;
+		
+//		System.out.println("currentPage: "+ currentPage);	
+//		System.out.println("totalData: "+ totalData);	
+//		System.out.println("size: "+ size);	
+//		System.out.println("start: "+ start);	
 		
 		return entityManager.createQuery(jpql, Sach.class).setFirstResult(start).setMaxResults(size).getResultList();
 	}

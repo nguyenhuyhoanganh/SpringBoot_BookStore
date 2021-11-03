@@ -1,6 +1,6 @@
 package com.Store.model;
 
-public class NhomMuaDTO {
+public class NhommuaDTO {
 	private int maNhom;
 	private String tenNhom;
 
@@ -20,13 +20,13 @@ public class NhomMuaDTO {
 		this.tenNhom = tenNhom;
 	}
 
-	public NhomMuaDTO(int maNhom, String tenNhom) {
+	public NhommuaDTO(int maNhom, String tenNhom) {
 		super();
 		this.maNhom = maNhom;
 		this.tenNhom = tenNhom;
 	}
 
-	public NhomMuaDTO() {
+	public NhommuaDTO() {
 		super();
 	}
 }

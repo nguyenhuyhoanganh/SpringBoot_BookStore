@@ -1,6 +1,6 @@
 package com.Store.model;
 
-public class TheLoaiDTO {
+public class TheloaiDTO {
 	private int maTheLoai;
 	private String icon;
 	private String tenTheLoai;
@@ -29,14 +29,14 @@ public class TheLoaiDTO {
 		this.tenTheLoai = tenTheLoai;
 	}
 
-	public TheLoaiDTO(int maTheLoai, String icon, String tenTheLoai) {
+	public TheloaiDTO(int maTheLoai, String icon, String tenTheLoai) {
 		super();
 		this.maTheLoai = maTheLoai;
 		this.icon = icon;
 		this.tenTheLoai = tenTheLoai;
 	}
 
-	public TheLoaiDTO() {
+	public TheloaiDTO() {
 		super();
 	}
 	

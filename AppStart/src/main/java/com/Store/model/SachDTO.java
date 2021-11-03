@@ -14,9 +14,9 @@ public class SachDTO {
 	private int soLuongTon;
 	private String tenSach;
 	
-	private NhomMuaDTO nhomMua;
-	private TheLoaiDTO theLoai;
-	private NhaXuatBanDTO nhaXuatBan;
+	private NhommuaDTO nhomMua;
+	private TheloaiDTO theLoai;
+	private NhaxuatbanDTO nhaXuatBan;
 	
 	public int getMaSach() {
 		return maSach;
@@ -78,22 +78,22 @@ public class SachDTO {
 	public void setTenSach(String tenSach) {
 		this.tenSach = tenSach;
 	}
-	public NhomMuaDTO getNhomMua() {
+	public NhommuaDTO getNhomMua() {
 		return nhomMua;
 	}
-	public void setNhomMua(NhomMuaDTO nhomMua) {
+	public void setNhomMua(NhommuaDTO nhomMua) {
 		this.nhomMua = nhomMua;
 	}
-	public TheLoaiDTO getTheLoai() {
+	public TheloaiDTO getTheLoai() {
 		return theLoai;
 	}
-	public void setTheLoai(TheLoaiDTO theLoai) {
+	public void setTheLoai(TheloaiDTO theLoai) {
 		this.theLoai = theLoai;
 	}
-	public NhaXuatBanDTO getNhaXuatBan() {
+	public NhaxuatbanDTO getNhaXuatBan() {
 		return nhaXuatBan;
 	}
-	public void setNhaXuatBan(NhaXuatBanDTO nhaXuatBan) {
+	public void setNhaXuatBan(NhaxuatbanDTO nhaXuatBan) {
 		this.nhaXuatBan = nhaXuatBan;
 	}
 	
@@ -111,16 +111,16 @@ public class SachDTO {
 		this.soLuongTon = soLuongTon;
 		this.tenSach = tenSach;
 		
-		this.nhomMua = new NhomMuaDTO();
-		this.theLoai = new TheLoaiDTO();
-		this.nhaXuatBan = new NhaXuatBanDTO();
+		this.nhomMua = new NhommuaDTO();
+		this.theLoai = new TheloaiDTO();
+		this.nhaXuatBan = new NhaxuatbanDTO();
 	}
 	public SachDTO() {
 		super();
 		
-		this.nhomMua = new NhomMuaDTO();
-		this.theLoai = new TheLoaiDTO();
-		this.nhaXuatBan = new NhaXuatBanDTO();
+		this.nhomMua = new NhommuaDTO();
+		this.theLoai = new TheloaiDTO();
+		this.nhaXuatBan = new NhaxuatbanDTO();
 	}
 	
 	

@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.Store.dao.SachDao;
+import com.Store.dao.SachDAO;
 import com.Store.entity.Nhaxuatban;
 import com.Store.entity.Nhommua;
 import com.Store.entity.Sach;
 import com.Store.entity.Theloai;
-import com.Store.model.NhaXuatBanDTO;
-import com.Store.model.NhomMuaDTO;
+import com.Store.model.NhaxuatbanDTO;
+import com.Store.model.NhommuaDTO;
 import com.Store.model.SachDTO;
-import com.Store.model.TheLoaiDTO;
+import com.Store.model.TheloaiDTO;
 import com.Store.service.SachService;
 
 @Transactional
@@ -23,7 +23,7 @@ import com.Store.service.SachService;
 public class SachServiceImpl implements SachService {
 	
 	@Autowired 
-	SachDao sachDao;
+	private SachDAO sachDao;
 
 	@Override
 	public void addBook(SachDTO sachDTO) {
@@ -107,17 +107,17 @@ public class SachServiceImpl implements SachService {
 		bookDTO.setSoLuongTon(book.getSoLuongTon());
 		bookDTO.setSoLuongMua(book.getSoLuongMua());
 		
-		TheLoaiDTO genreDTO = new TheLoaiDTO();
+		TheloaiDTO genreDTO = new TheloaiDTO();
 		genreDTO.setMaTheLoai(book.getTheloai().getMaTheLoai());
 		genreDTO.setTenTheLoai(book.getTheloai().getTenTheLoai());
 		bookDTO.setTheLoai(genreDTO);
 		
-		NhomMuaDTO groupDTO = new NhomMuaDTO();
+		NhommuaDTO groupDTO = new NhommuaDTO();
 		groupDTO.setMaNhom(book.getNhommua().getMaNhom());
 		groupDTO.setTenNhom(book.getNhommua().getTenNhom());
 		bookDTO.setNhomMua(groupDTO);
 		
-		NhaXuatBanDTO publishDTO = new NhaXuatBanDTO();
+		NhaxuatbanDTO publishDTO = new NhaxuatbanDTO();
 		publishDTO.setMaNhaXuatBan(book.getNhaxuatban().getMaNhaXuatBan());
 		publishDTO.setTenNhaXuatBan(book.getNhaxuatban().getTenNhaXuatBan());
 		bookDTO.setNhaXuatBan(publishDTO);
@@ -144,17 +144,17 @@ public class SachServiceImpl implements SachService {
 			bookDTO.setSoLuongTon(book.getSoLuongTon());
 			bookDTO.setSoLuongMua(book.getSoLuongMua());
 			
-			TheLoaiDTO genreDTO = new TheLoaiDTO();
+			TheloaiDTO genreDTO = new TheloaiDTO();
 			genreDTO.setMaTheLoai(book.getTheloai().getMaTheLoai());
 			genreDTO.setTenTheLoai(book.getTheloai().getTenTheLoai());
 			bookDTO.setTheLoai(genreDTO);
 			
-			NhomMuaDTO groupDTO = new NhomMuaDTO();
+			NhommuaDTO groupDTO = new NhommuaDTO();
 			groupDTO.setMaNhom(book.getNhommua().getMaNhom());
 			groupDTO.setTenNhom(book.getNhommua().getTenNhom());
 			bookDTO.setNhomMua(groupDTO);
 			
-			NhaXuatBanDTO publishDTO = new NhaXuatBanDTO();
+			NhaxuatbanDTO publishDTO = new NhaxuatbanDTO();
 			publishDTO.setMaNhaXuatBan(book.getNhaxuatban().getMaNhaXuatBan());
 			publishDTO.setTenNhaXuatBan(book.getNhaxuatban().getTenNhaXuatBan());
 			bookDTO.setNhaXuatBan(publishDTO);
@@ -187,17 +187,17 @@ public class SachServiceImpl implements SachService {
 			dto.setSoLuongTon(sach.getSoLuongTon());
 			dto.setSoLuongMua(sach.getSoLuongMua());
 			
-			TheLoaiDTO genreDTO = new TheLoaiDTO();
+			TheloaiDTO genreDTO = new TheloaiDTO();
 			genreDTO.setMaTheLoai(sach.getTheloai().getMaTheLoai());
 			genreDTO.setTenTheLoai(sach.getTheloai().getTenTheLoai());
 			dto.setTheLoai(genreDTO);
 			
-			NhomMuaDTO groupDTO = new NhomMuaDTO();
+			NhommuaDTO groupDTO = new NhommuaDTO();
 			groupDTO.setMaNhom(sach.getNhommua().getMaNhom());
 			groupDTO.setTenNhom(sach.getNhommua().getTenNhom());
 			dto.setNhomMua(groupDTO);
 			
-			NhaXuatBanDTO publishDTO = new NhaXuatBanDTO();
+			NhaxuatbanDTO publishDTO = new NhaxuatbanDTO();
 			publishDTO.setMaNhaXuatBan(sach.getNhaxuatban().getMaNhaXuatBan());
 			publishDTO.setTenNhaXuatBan(sach.getNhaxuatban().getTenNhaXuatBan());
 			dto.setNhaXuatBan(publishDTO);

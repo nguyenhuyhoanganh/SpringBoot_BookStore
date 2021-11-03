@@ -15,8 +15,6 @@ public interface SachService {
 
 	public List<SachDTO> getAllBook(int currentPage, int size);
 	
-//	public Page<SachDTO> Pagination(Pageable page);
-	
 	public List<SachDTO> search(String tenSach, String tenTheLoai, String tenNhaXuatBan, String tenNhomMua,
 			long donGiaBatDau, long donGiaKetThuc);
 }

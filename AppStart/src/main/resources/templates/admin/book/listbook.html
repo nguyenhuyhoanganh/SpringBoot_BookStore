@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <title>list book</title>
 <link rel="stylesheet" th:href="@{/css/pagination.css}">
 <style>
@@ -16,6 +16,7 @@ table, th, td {
 </style>
 </head>
 <body>
+<div th:replace="admin/common/menu::menu"></div>
 	<h2>Danh sách sản phẩm</h2>
 	<hr />
 	<!-- 	<div>
@@ -50,7 +51,8 @@ table, th, td {
 			<button type="submit">search</button>
 		</form>
 	</div> -->
-	<a href="">Thêm mới</a>
+	
+	<a th:href="@{'/them-moi-san-pham'}">Thêm mới</a>
 	<div class="center">
 		<table>
 			<tr>
@@ -71,16 +73,19 @@ table, th, td {
 			<tr th:each="book : ${books}">
 				<td th:text="${book.maSach}"></td>
 				<td th:text="${book.tenSach}"></td>
-				<td th:text="${book.hinhAnh}"></td>
-				<td th:text="${book.hinhAnh2}"></td>
-				<td th:text="${book.hinhAnh3}"></td>
+				<td><img th:src="@{'/download?image='+${book.getHinhAnh()}}" style="width: 100px; height: 50px;"></td>
+				<td><img th:src="@{'/download?image='+${book.getHinhAnh2()}}" style="width: 100px; height: 50px;"></td>
+				<td><img th:src="@{'/download?image='+${book.getHinhAnh3()}}" style="width: 100px; height: 50px;"></td>
 				<td th:text="${book.donGia}"></td>
 				<td th:text="${book.soLuongTon}"></td>
 				<td th:text="${book.soLuongMua}"></td>
 				<td th:text="${book.theLoai.tenTheLoai}"></td>
 				<td th:text="${book.nhomMua.tenNhom}"></td>
 				<td th:text="${book.nhaXuatBan.tenNhaXuatBan}"></td>
-				<td><a href="">Chi tiết</a> <a href="">Xóa</a></td>
+				<td>
+					<a th:href="@{'/xoa-san-pham?bookId='+${book.maSach}}">Chi tiết</a> 
+					<a th:href="@{'/xoa-san-pham/'+${book.maSach}}">Xóa</a>
+				</td>
 			</tr>
 		</table>
 	</div>

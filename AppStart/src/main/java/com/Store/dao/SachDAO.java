@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.Store.entity.Sach;
 
-public interface SachDao{
+public interface SachDAO{
 	public void addBook(Sach sach);
 
 	public void updateBook(Sach sach);
