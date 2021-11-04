@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Chi Tiết Sản Phẩm</title>
+<script src="https://cdn.tiny.cloud/1/2mxsxulxmdqvlr9jnx0cii9sz96jwsyqbahtu3gars8e7kp6/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+	<div>
+		<label>Tên</label> <span th:text="${book.tenSach}"></span>
+	</div>
+	<br />
+
+	<div>
+		<label>Giá</label> <span th:text="${book.donGia}" ></span>
+	</div>
+	<br />
+
+	<div>
+		<label>Số Lượng</label> <span th:text="${book.soLuongTon}"></span>
+	</div>
+	<br />
+
+	<div>
+		<label>Mô Tả</label>
+		<textarea rows="" cols="" th:text="${book.moTa}"></textarea>
+	</div>
+	<br />
+
+	<div>
+		<label>Thể Loại</label> <span  th:text="${book.theLoai.tenTheLoai}" ></span>
+	</div>
+	<br />
+
+	<div>
+		<label>Nhà Sản Xuất</label> <span  th:text="${book.nhomMua.tenNhom}"></span>
+	</div>
+	<br />
+
+	<div>
+		<label>Nhóm Mua</label> <span  th:text="${book.nhaXuatBan.tenNhaXuatBan}" ></span>
+	</div>
+	<br />
+
+	<div>
+		<img th:src="@{'/download?image='+${book.getHinhAnh()}}"
+			style="width: 100px; height: 200px;">
+	</div>
+	<br />
+
+	<div>
+		<img th:src="@{'/download?image='+${book.getHinhAnh2()}}"
+			style="width: 100px; height: 200px;">
+	</div>
+	<br />
+
+	<div>
+		<img th:src="@{'/download?image='+${book.getHinhAnh3()}}"
+			style="width: 100px; height: 200px;">
+	</div>
+	<br />
+	<a th:href="@{'/danh-sach-san-pham'}">Quay Lại</a> 
+	<a th:href="@{'/sua-san-pham'}">Sửa</a> 
+	
+		<script>
+    tinymce.init({
+      selector: 'textarea',
+      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+      toolbar_mode: 'floating',
+      entity_encoding : "raw",
+      encoding: "UTF-8",
+   });
+  </script>
+</body>
+</html>

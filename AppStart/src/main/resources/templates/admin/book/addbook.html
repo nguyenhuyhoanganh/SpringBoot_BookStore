@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Add book</title>
+<title>Thêm Sản Phẩm</title>
 <style>
 .thumb-image {
 	float: left;
@@ -82,6 +82,7 @@
 		
 			<div><input type="submit" value="Thêm mới" /></div>
 	</form>
+	<a th:href="@{'/danh-sach-san-pham'}">Quay Lại</a> 
 	<!-- <div id="wrapper" style="margin-top: 20px;">
 		<input id="fileUpload" name="imageFile" multiple="multiple" type="file" accept="image/*" />
 		<div id="image-holder"></div>
@@ -126,6 +127,8 @@
       selector: 'textarea',
       plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
       toolbar_mode: 'floating',
+      entity_encoding : "raw",
+      encoding: "UTF-8",
    });
   </script>
   

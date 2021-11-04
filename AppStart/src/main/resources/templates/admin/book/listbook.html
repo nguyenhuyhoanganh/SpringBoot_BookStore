@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
-<title>list book</title>
+<title>Danh Sách Sản Phẩm</title>
 <link rel="stylesheet" th:href="@{/css/pagination.css}">
 <style>
 table, th, td {
@@ -83,7 +83,7 @@ table, th, td {
 				<td th:text="${book.nhomMua.tenNhom}"></td>
 				<td th:text="${book.nhaXuatBan.tenNhaXuatBan}"></td>
 				<td>
-					<a th:href="@{'/xoa-san-pham?bookId='+${book.maSach}}">Chi tiết</a> 
+					<a th:href="@{'/chi-tiet-san-pham/'+${book.maSach}}">Chi tiết</a> 
 					<a th:href="@{'/xoa-san-pham/'+${book.maSach}}">Xóa</a>
 				</td>
 			</tr>
